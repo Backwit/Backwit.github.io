@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/img/weixin_gzh.jpg">
 <meta property="og:image" content="http://yoursite.com/img/weixin_gzh.jpg">
 <meta property="og:image" content="http://yoursite.com/img/weixin_gzh.jpg">
-<meta property="og:updated_time" content="2018-03-25T09:08:24.432Z">
+<meta property="og:updated_time" content="2018-03-25T09:16:54.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo常用命令及blog测试">
 <meta name="twitter:description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。此文主要是用来做测试的。。">
@@ -218,10 +218,15 @@
 <p><strong>7.添加外链音乐</strong><br>网易云音乐：在网易云搜索音乐，然后生成外置链接，贴过来就可以了。</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=465968774&auto=1&height=66"></iframe>
 
-<p><strong>8.添加微信公众号图片</strong><br><img src="/img/weixin_gzh.jpg" alt="添加描述"></p>
-<p><img src="/img/weixin_gzh.jpg" width="50%" height="50%"></p>
-<div align="center"><br><img src="/img/weixin_gzh.jpg" width="300" height="200" alt="图片名称" align="center"><br></div>
+<p><strong>8.添加微信公众号图片</strong><br>1）markdown的方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![添加描述](/img/weixin_gzh.jpg)</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="/img/weixin_gzh.jpg" alt="添加描述"></p>
+<p>2）缩放：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/img/weixin_gzh.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><img src="/img/weixin_gzh.jpg" width="50%" height="50%"></p>
+<p>3）居中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div  align=&quot;center&quot;&gt;    </span><br><span class="line">	&lt;img src=&quot;/img/weixin_gzh.jpg&quot; width = &quot;50%&quot; height = &quot;50%&quot; alt=&quot;图片名称&quot; align=center /&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>效果：</p>
+<div align="center"><br>    <img src="/img/weixin_gzh.jpg" width="50%" height="50%" alt="图片名称" align="center"><br></div>
 
+<p><strong>9.Markdown语法</strong><br>有空再加</p>
 <h2 id="二、官方说明"><a href="#二、官方说明" class="headerlink" title="二、官方说明"></a>二、官方说明</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
