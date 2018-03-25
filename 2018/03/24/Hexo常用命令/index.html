@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo常用命令 | Backwit</title>
+  <title>Hexo常用命令及blog测试 | Backwit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。">
+  <meta name="description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。此文主要是用来做测试的。。">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo常用命令">
+<meta property="og:title" content="Hexo常用命令及blog测试">
 <meta property="og:url" content="http://yoursite.com/2018/03/24/Hexo常用命令/index.html">
 <meta property="og:site_name" content="Backwit">
-<meta property="og:description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。">
-<meta property="og:updated_time" content="2018-03-25T07:33:39.244Z">
+<meta property="og:description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。此文主要是用来做测试的。。">
+<meta property="og:updated_time" content="2018-03-25T07:52:52.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo常用命令">
-<meta name="twitter:description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。">
+<meta name="twitter:title" content="Hexo常用命令及blog测试">
+<meta name="twitter:description" content="主要介绍一下，使用hexo主题的blog的常用的一些命令。此文主要是用来做测试的。。">
   
     <link rel="alternative" href="/atom.xml" title="Backwit" type="application/atom+xml">
   
@@ -171,7 +171,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo常用命令
+      Hexo常用命令及blog测试
     </h1>
   
 
@@ -192,7 +192,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主要介绍一下，使用hexo主题的blog的常用的一些命令。</p>
+        <p>主要介绍一下，使用hexo主题的blog的常用的一些命令。此文主要是用来做测试的。。</p>
 <a id="more"></a>
 <h2 id="一、常用命令"><a href="#一、常用命令" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><p><strong>1.新建文章</strong><br>1) hexo new “xxx” ##xxx默认是放在 hexo/source/_posts/ 目录下面<br>2) 或者把编译好的md文件放在此目录。</p>
 <p><strong>2.新建页面</strong><br>hexo new page “xxx” ##这个可以用作链接</p>
@@ -202,6 +202,10 @@
 <p><strong>6.hexo使用中遇到的git的错误</strong><br>error:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Error: ssh: connect to host github.com port 22: Connection timed out</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\github.io.blog\hexo\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at emitTwo (events.js:126:13)</span><br><span class="line">    at ChildProcess.emit (events.js:214:7)</span><br><span class="line">    at ChildProcess.cp.emit (D:\github.io.blog\hexo\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:925:16)</span><br><span class="line">    at Socket.stream.socket.on (internal/child_process.js:346:11)</span><br><span class="line">    at emitOne (events.js:116:13)</span><br><span class="line">    at Socket.emit (events.js:211:7)</span><br><span class="line">    at Pipe._handle.close [as _onclose] (net.js:554:12)</span><br></pre></td></tr></table></figure></p>
 <p>解决方法：<a href="https://blog.csdn.net/Vosang/article/details/50499300" target="_blank" rel="noopener">链接</a><br>1）主要就是在.ssh目录下添加config文件，内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User YourEmail@xxx.xxx</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure></p>
 <p>2）chmod 777 config<br>3）再次执行”ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>”时，会出现提示如下，回车”yes”即可。</p>
+<p><strong>7.添加外链音乐</strong><br>网易云音乐</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=465968774&auto=1&height=66"></iframe>
+
+
 <h2 id="二、官方说明"><a href="#二、官方说明" class="headerlink" title="二、官方说明"></a>二、官方说明</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -364,7 +368,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Hexo常用命令" data-title="Hexo常用命令" data-url="http://yoursite.com/2018/03/24/Hexo常用命令/"></div>
+	<div class="ds-thread" data-thread-key="Hexo常用命令" data-title="Hexo常用命令及blog测试" data-url="http://yoursite.com/2018/03/24/Hexo常用命令/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
