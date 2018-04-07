@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Backwit">
 <meta property="og:description" content="用了半个月的时间粗略的过了一遍《Linux内核设计与实现》。确实讲的都是理论的知识，比较通俗易懂吧！这里简单的记录一下，主要的内容，以供后面进一步的学习和回顾。">
 <meta property="og:image" content="http://yoursite.com/img/Flow_chart_of%20_process_states.bmp">
-<meta property="og:updated_time" content="2018-04-07T08:38:43.364Z">
+<meta property="og:updated_time" content="2018-04-07T08:42:55.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="略读《Linux内核设计与实现》">
 <meta name="twitter:description" content="用了半个月的时间粗略的过了一遍《Linux内核设计与实现》。确实讲的都是理论的知识，比较通俗易懂吧！这里简单的记录一下，主要的内容，以供后面进一步的学习和回顾。">
@@ -237,7 +237,7 @@
 <h3 id="2-3-其他开发注意事项"><a href="#2-3-其他开发注意事项" class="headerlink" title="2.3 其他开发注意事项"></a>2.3 其他开发注意事项</h3><p>1.内核不能使用标准c库<br>2.不要轻易使用浮点数<br>3.内核栈很小（之前写驱动的时候，定义了一个很大的数组，把内核栈爆了。）</p>
 <h2 id="第三章-进程管理"><a href="#第三章-进程管理" class="headerlink" title="第三章 进程管理"></a>第三章 进程管理</h2><p>这一章主要讲了进程的基本概念，进程的状态，进程的创建于销毁。</p>
 <h3 id="3-1-进程描述符（process-descriptor）"><a href="#3-1-进程描述符（process-descriptor）" class="headerlink" title="3.1 进程描述符（process descriptor）"></a>3.1 进程描述符（process descriptor）</h3><p>进程描述符对应的一个进程或者是线程，其实质就是 task_struct 结构体。定义在 linux/sched.h 中。</p>
-<h3 id="3-2-进程的状态"><a href="#3-2-进程的状态" class="headerlink" title="3.2 进程的状态"></a>3.2 进程的状态</h3><p>进程有五种状态：运行（TASK_RUNNING）、可中断（TASK_INTERRUPTIBLE）、不可中断（TASK_UNINTERRUPTIBLE）、被其他进程跟踪（<strong>TASK_TRACED）、停止（</strong>TASK_STOPPED）。</p>
+<h3 id="3-2-进程的状态"><a href="#3-2-进程的状态" class="headerlink" title="3.2 进程的状态"></a>3.2 进程的状态</h3><p>进程有五种状态：运行（TASK_RUNNING）、可中断（TASK_INTERRUPTIBLE）、不可中断（TASK_UNINTERRUPTIBLE）、被其他进程跟踪（__TASK_TRACED）、停止（__TASK_STOPPED）。</p>
 <ol>
 <li>R (TASK_RUNNING)，可执行状态&amp;运行状态(在run_queue队列里的状态)</li>
 <li>S (TASK_INTERRUPTIBLE)，可中断的睡眠状态, 可处理signal</li>
