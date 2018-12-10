@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C++并行编程之原子操作的内存顺序 | Backwit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. C++原子操作的内存顺序概述 memory order主要有以下几种:   memory_order_relaxed只提供对单个atomic变量的原子读/写，不和前后语句有任何memory order的约束关系。  memory_order_consume程序可以说明哪些变量有依赖关系，从而只需要同步这些变量的内存。类似于memory_order_acquire，但是只对有依赖关系的内存。意">
+  <meta name="description" content="读完了C++并发编程实战，记录一下对memory order的理解。">
 <meta name="keywords" content="C++并发编程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++并行编程之原子操作的内存顺序">
 <meta property="og:url" content="http://yoursite.com/2018/12/11/C++ 并行编程之原子操作的内存顺序/index.html">
 <meta property="og:site_name" content="Backwit">
-<meta property="og:description" content="1. C++原子操作的内存顺序概述 memory order主要有以下几种:   memory_order_relaxed只提供对单个atomic变量的原子读/写，不和前后语句有任何memory order的约束关系。  memory_order_consume程序可以说明哪些变量有依赖关系，从而只需要同步这些变量的内存。类似于memory_order_acquire，但是只对有依赖关系的内存。意">
-<meta property="og:updated_time" content="2018-12-10T16:11:01.567Z">
+<meta property="og:description" content="读完了C++并发编程实战，记录一下对memory order的理解。">
+<meta property="og:updated_time" content="2018-12-10T16:16:55.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++并行编程之原子操作的内存顺序">
-<meta name="twitter:description" content="1. C++原子操作的内存顺序概述 memory order主要有以下几种:   memory_order_relaxed只提供对单个atomic变量的原子读/写，不和前后语句有任何memory order的约束关系。  memory_order_consume程序可以说明哪些变量有依赖关系，从而只需要同步这些变量的内存。类似于memory_order_acquire，但是只对有依赖关系的内存。意">
+<meta name="twitter:description" content="读完了C++并发编程实战，记录一下对memory order的理解。">
   
     <link rel="alternative" href="/atom.xml" title="Backwit" type="application/atom+xml">
   
@@ -201,7 +201,10 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-C-原子操作的内存顺序概述"><a href="#1-C-原子操作的内存顺序概述" class="headerlink" title="1. C++原子操作的内存顺序概述"></a>1. C++原子操作的内存顺序概述</h2><ol>
+        <p>读完了C++并发编程实战，记录一下对memory order的理解。</p>
+<a id="more"></a>
+<hr>
+<h2 id="1-C-原子操作的内存顺序概述"><a href="#1-C-原子操作的内存顺序概述" class="headerlink" title="1. C++原子操作的内存顺序概述"></a>1. C++原子操作的内存顺序概述</h2><ol>
 <li>memory order主要有以下几种:</li>
 </ol>
 <ul>
