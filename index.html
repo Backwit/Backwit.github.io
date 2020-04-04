@@ -124,12 +124,17 @@
 				<div class="index-brief">
 					
 1. C++原子操作的内存顺序概述
+
 memory order主要有以下几种:
 
 
-memory_order_relaxed只提供对单个atomic变量的原子读/写，不和前后语句有任何memory order的约束关系。
 
-memory_order_consume程序可以说明哪些变量有依赖关系，从而
+memory_order_relaxed
+只提供对单个atomic变量的原子读/写，不和前后语句有任何memory order的约束关系。
+
+
+memory_order_consume
+程序可以说明哪些变量有依赖
 					...
 				</div>
 			</a>
@@ -156,11 +161,13 @@ memory_order_consume程序可以说明哪些变量有依赖关系，从而
 				</h2>
 				<div class="index-brief">
 					
-第二章 从内核出发本章主要介绍了内核代码的获取，编译，开发注意的事项。
+第二章 从内核出发
+本章主要介绍了内核代码的获取，编译，开发注意的事项。
 2.1 内核源码树的结构
+
 arch：这个为目录存放的是与CPU架构相关的文件，每个子目录代表了一种CPU架构，比如arm，x86，MIPS，PPC等。
 block：部分块设备的驱动程序。
-crypto：这个目录下放了一些各种常
+crypto：这个目录下放了一些各
 					...
 				</div>
 			</a>
@@ -187,7 +194,8 @@ crypto：这个目录下放了一些各种常
 				</h2>
 				<div class="index-brief">
 					
-一、定义123#define container_of(ptr, type, member) (&#123;			\	const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);	\	(type *)( (char *)__mptr - offse
+一、定义
+123#define container_of(ptr, type, member) (&#123;			\	const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);	\	(type *)( (char *)__mptr - offs
 					...
 				</div>
 			</a>
@@ -213,9 +221,16 @@ crypto：这个目录下放了一些各种常
 					Hexo常用命令
 				</h2>
 				<div class="index-brief">
-					一、常用命令1.新建文章1) hexo new “xxx” ##xxx默认是放在 hexo/source/_posts/ 目录下面2) 或者把编译好的md文件放在此目录。
-2.新建页面hexo new page “xxx” ##这个可以用作链接
-3.如何分类，添加tag123456789---tit
+					一、常用命令
+1.新建文章
+
+hexo new “xxx” ##xxx默认是放在 hexo/source/_posts/ 目录下面
+或者把编译好的md文件放在此目录。
+
+2.新建页面
+hexo new page “xxx” ##这个可以用作链接
+3.如何分类，添加tag
+123456789---ti
 					...
 				</div>
 			</a>
