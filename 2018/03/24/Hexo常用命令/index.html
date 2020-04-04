@@ -151,18 +151,49 @@
 <p><strong>2.新建页面</strong><br>
 hexo new page “xxx” ##这个可以用作链接</p>
 <p><strong>3.如何分类，添加tag</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Linux分类下的demo blog</span><br><span class="line">date: 2018-03-11 18:53:20</span><br><span class="line">categories: &quot;Linux&quot; #文章分类目录 可以省略</span><br><span class="line">tags: #文章tag 可以省略</span><br><span class="line">     - Linux</span><br><span class="line">     - python</span><br><span class="line">---</span><br><span class="line">xxxx 正文部分</span><br></pre></td></tr></table></figure>
+<pre><code>---
+title: Linux分类下的demo blog
+date: 2018-03-11 18:53:20
+categories: &quot;Linux&quot; #文章分类目录 可以省略
+tags: #文章tag 可以省略
+     - Linux
+     - python
+---
+xxxx 正文部分
+</code></pre>
 <p><strong>4.只显示部分</strong><br>
 在需要的地方添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;!-- more --&gt;
+</code></pre>
 <p><strong>5.添加访问统计和目录可以参考以下链接，这里就不copy了</strong><br>
 <a href="http://www.54tianzhisheng.cn/2017/12/18/hexo-yilia/" target="_blank" rel="noopener">Hexo + yilia 搭建博客可能会遇到的所有疑问</a></p>
 <p><strong>6.hexo使用中遇到的git的错误</strong><br>
 error:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Error: ssh: connect to host github.com port 22: Connection timed out</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\github.io.blog\hexo\node_modules\hexo-util\lib\spawn.js:37:17)</span><br><span class="line">    at emitTwo (events.js:126:13)</span><br><span class="line">    at ChildProcess.emit (events.js:214:7)</span><br><span class="line">    at ChildProcess.cp.emit (D:\github.io.blog\hexo\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:925:16)</span><br><span class="line">    at Socket.stream.socket.on (internal/child_process.js:346:11)</span><br><span class="line">    at emitOne (events.js:116:13)</span><br><span class="line">    at Socket.emit (events.js:211:7)</span><br><span class="line">    at Pipe._handle.close [as _onclose] (net.js:554:12)</span><br></pre></td></tr></table></figure>
+<pre><code>Error: ssh: connect to host github.com port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+    at ChildProcess.&lt;anonymous&gt; (D:\github.io.blog\hexo\node_modules\hexo-util\lib\spawn.js:37:17)
+    at emitTwo (events.js:126:13)
+    at ChildProcess.emit (events.js:214:7)
+    at ChildProcess.cp.emit (D:\github.io.blog\hexo\node_modules\cross-spawn\lib\enoent.js:40:29)
+    at maybeClose (internal/child_process.js:925:16)
+    at Socket.stream.socket.on (internal/child_process.js:346:11)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at Pipe._handle.close [as _onclose] (net.js:554:12)
+</code></pre>
 <p>解决方法：<a href="https://blog.csdn.net/Vosang/article/details/50499300" target="_blank" rel="noopener">链接</a><br>
 1）主要就是在.ssh目录下添加config文件，内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">User YourEmail@xxx.xxx</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
+<pre><code>Host github.com
+User YourEmail@xxx.xxx
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
+</code></pre>
 <p>2）chmod 777 config<br>
 3）再次执行”ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>”时，会出现提示如下，回车”yes”即可。</p>
 <p><strong>7.添加外链音乐</strong><br>
@@ -170,15 +201,20 @@ error:</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=465968774&auto=1&height=66"></iframe>
 <p><strong>8.添加微信公众号图片</strong><br>
 1）markdown的方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![添加描述](/img/weixin_gzh.jpg)</span><br></pre></td></tr></table></figure>
+<pre><code>![添加描述](/img/weixin_gzh.jpg)
+</code></pre>
 <p>效果：<br>
 <img src="/img/weixin_gzh.jpg" alt="添加描述"></p>
 <p>2）缩放：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/img/weixin_gzh.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot;&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;img src=&quot;/img/weixin_gzh.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot;&gt;
+</code></pre>
 <p>效果：<br>
 <img src="/img/weixin_gzh.jpg" width="50%" height="50%"></p>
 <p>3）居中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div  align=&quot;center&quot;&gt;    </span><br><span class="line">	&lt;img src=&quot;/img/weixin_gzh.jpg&quot; width = &quot;50%&quot; height = &quot;50%&quot; alt=&quot;图片名称&quot; align=center /&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;div  align=&quot;center&quot;&gt;    
+	&lt;img src=&quot;/img/weixin_gzh.jpg&quot; width = &quot;50%&quot; height = &quot;50%&quot; alt=&quot;图片名称&quot; align=center /&gt;
+&lt;/div&gt;
+</code></pre>
 <p>效果：</p>
 <div align="center">    
 	<img src="/img/weixin_gzh.jpg" width="50%" height="50%" alt="图片名称" align="center">
@@ -187,16 +223,20 @@ error:</p>
 有空再加</p>
 <h2 id="二、官方说明">二、官方说明</h2>
 <h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">$ hexo server
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">$ hexo generate
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">$ hexo deploy
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
 </div>

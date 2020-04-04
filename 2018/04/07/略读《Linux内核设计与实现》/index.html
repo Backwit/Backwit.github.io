@@ -172,9 +172,17 @@
 </ul>
 <h3 id="2-2-内核编译">2.2 内核编译</h3>
 <p>1.内核配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常用的有：</span><br><span class="line">make menuconfig ## 图形界面配置</span><br><span class="line">make defconfig ## 默认配置</span><br><span class="line">make oldconfig ## 拷贝原来的内核源码树的根目录的 .config 文件用来编译</span><br></pre></td></tr></table></figure>
+<pre><code>常用的有：
+make menuconfig ## 图形界面配置
+make defconfig ## 默认配置
+make oldconfig ## 拷贝原来的内核源码树的根目录的 .config 文件用来编译
+</code></pre>
 <p>2.内核编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br><span class="line">make [-j #]</span><br><span class="line">make modules_install</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<pre><code>make menuconfig
+make [-j #]
+make modules_install
+make install
+</code></pre>
 <h3 id="2-3-其他开发注意事项">2.3 其他开发注意事项</h3>
 <p>1.内核不能使用标准c库<br>
 2.不要轻易使用浮点数<br>

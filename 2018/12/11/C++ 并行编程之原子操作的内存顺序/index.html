@@ -222,7 +222,47 @@ memory_order_seq_cst 由这个值指定，这个也很简单，相当于各CPU�
 如下例，在此顺序下，只要x,y的值修改了，其他线程的load操作就会是最新的值，所以线程c和d，不管哪个先执行完，后执行完的肯定会修改z，所以一定不会报异常。但是要是松散模型，即使x，y变了，但是在线程cd load时，也可以是之前为未修改的值。</p>
 </li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;atomic&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">bool</span>&gt; x,y;</span><br><span class="line"><span class="built_in">std</span>::atomic&lt;<span class="keyword">int</span>&gt; z;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_x</span><span class="params">()</span> <span class="comment">//a</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">x.store(<span class="literal">true</span>,<span class="built_in">std</span>::memory_order_seq_cst);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_y</span><span class="params">()</span> <span class="comment">//b</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">y.store(<span class="literal">true</span>,<span class="built_in">std</span>::memory_order_seq_cst);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read_x_then_y</span><span class="params">()</span> <span class="comment">//c</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">while</span>(!x.load(<span class="built_in">std</span>::memory_order_seq_cst)); <span class="comment">//  1</span></span><br><span class="line"><span class="keyword">if</span>(y.load(<span class="built_in">std</span>::memory_order_seq_cst))  <span class="comment">// 2</span></span><br><span class="line">++z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read_y_then_x</span><span class="params">()</span> <span class="comment">//d</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">while</span>(!y.load(<span class="built_in">std</span>::memory_order_seq_cst)); <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">if</span>(x.load(<span class="built_in">std</span>::memory_order_seq_cst)) <span class="comment">// 4</span></span><br><span class="line">++z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">x=<span class="literal">false</span>;</span><br><span class="line">y=<span class="literal">false</span>;</span><br><span class="line">z=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">a</span><span class="params">(write_x)</span></span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">b</span><span class="params">(write_y)</span></span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">c</span><span class="params">(read_x_then_y)</span></span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="function">thread <span class="title">d</span><span class="params">(read_y_then_x)</span></span>;</span><br><span class="line">a.join();</span><br><span class="line">b.join();</span><br><span class="line">c.join();</span><br><span class="line">d.join();</span><br><span class="line">assert(z.load()!=<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-c++">#include &lt;atomic&gt;
+#include &lt;thread&gt;
+#include &lt;assert.h&gt;
+std::atomic&lt;bool&gt; x,y;
+std::atomic&lt;int&gt; z;
+void write_x() //a
+{
+x.store(true,std::memory_order_seq_cst);
+}
+void write_y() //b
+{
+y.store(true,std::memory_order_seq_cst);
+}
+void read_x_then_y() //c
+{
+while(!x.load(std::memory_order_seq_cst)); //  1
+if(y.load(std::memory_order_seq_cst))  // 2
+++z;
+}
+void read_y_then_x() //d
+{
+while(!y.load(std::memory_order_seq_cst)); // 3
+if(x.load(std::memory_order_seq_cst)) // 4
+++z;
+}
+int main()
+{
+x=false;
+y=false;
+z=0;
+std::thread a(write_x);
+std::thread b(write_y);
+std::thread c(read_x_then_y);
+std::thread d(read_y_then_x);
+a.join();
+b.join();
+c.join();
+d.join();
+assert(z.load()!=0);
+}
+</code></pre>
 <ul>
 <li>
 <p><strong>acquire-release 获得-释放顺序</strong><br>
